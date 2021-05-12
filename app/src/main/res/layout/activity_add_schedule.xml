@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddScheduleActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        android:background="@drawable/border_round">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ic_outline_clear_24"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/exitThisScreenButton"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="시간표추가"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:layout_gravity="center_vertical"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginRight="10dp"
+            android:text="완료"
+            android:textSize="15dp"
+            android:background="@drawable/border_square"
+            android:textColor="@color/black"
+            android:layout_gravity="center_vertical"/>
+        
+    </LinearLayout>
+
+    <include layout="@layout/schedule"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="2dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:orientation="vertical"
+        >
+        <EditText
+            android:id="@+id/classAdd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="수업명"
+            android:textSize="15dp"
+            android:textColor="@android:color/darker_gray"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="시간 및 장소 추가"
+            android:textSize="15dp"
+            android:padding="5dp"
+            android:layout_marginTop="4dp"
+            android:textColor="@android:color/holo_red_dark"/>
+            />
+    </LinearLayout>
+
+</LinearLayout>
