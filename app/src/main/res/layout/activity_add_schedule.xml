@@ -56,31 +56,33 @@
         android:layout_height="200dp"
         android:layout_marginBottom="2dp"/>
 
-    <LinearLayout
+    <EditText
+        android:id="@+id/classAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:orientation="vertical"
-        >
-        <EditText
-            android:id="@+id/classAdd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="수업명"
-            android:textSize="15dp"
-            android:textColor="@android:color/darker_gray"/>
+        android:text="수업명"
+        android:textSize="18dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="4dp"
+        android:textColor="@android:color/darker_gray"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="시간 및 장소 추가"
-            android:textSize="15dp"
-            android:padding="5dp"
-            android:layout_marginTop="4dp"
-            android:textColor="@android:color/holo_red_dark"/>
-            />
-    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/timeRecyclerView"
+        android:scrollbars="vertical" />
+
+    <Button
+        android:id="@+id/addTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="시간 및 장소 추가"
+        android:textSize="18dp"
+        android:padding="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:textColor="@android:color/holo_red_dark"/>
 
 </LinearLayout>

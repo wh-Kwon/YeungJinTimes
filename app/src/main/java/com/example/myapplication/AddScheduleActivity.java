@@ -1,20 +1,27 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 public class AddScheduleActivity extends AppCompatActivity {
+    RecyclerView recyclerView = null;
+    RecyclerViewAdapter adapter = null;
+    ArrayList<TimeAddRecyclerViewItem> list;
+
+    private Spinner daySpinner;
+    private Spinner startTimeSpinner;
+    private Spinner finishTimeSpinner;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +45,38 @@ public class AddScheduleActivity extends AppCompatActivity {
 //            @Override
 //            public void onNothingSelected(AdapterView<?> parent) {}
 //        });
+
+        Button addTime = (Button) findViewById(R.id.addTime);
+
+        list = new ArrayList<>();
+        recyclerView = findViewById(R.id.timeRecyclerView);
+        adapter = new RecyclerViewAdapter(list);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+
+        daySpinner = recyclerView.findViewById(R.id.daySpinner);
+        startTimeSpinner = recyclerView.findViewById(R.id.startTimeSpinner);
+        finishTimeSpinner = recyclerView.findViewById(R.id.finishTimeSpinner);
+
+        addTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addItem(daySpinner, startTimeSpinner, finishTimeSpinner);
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+//        addItem(daySpinner, startTimeSpinner, finishTimeSpinner);
+//        addItem(daySpinner, startTimeSpinner, finishTimeSpinner);
+//        addItem(daySpinner, startTimeSpinner, finishTimeSpinner);
+    }
+
+    private void addItem(Spinner daySpinner, Spinner startTimeSpinner, Spinner finishTimeSpinner) {
+        TimeAddRecyclerViewItem item = new TimeAddRecyclerViewItem();
+        item.setDaySpinner(daySpinner);
+        item.setStartTimeSpinner(startTimeSpinner);
+        item.setFinishTimeSpinner(finishTimeSpinner);
+        list.add(item);
     }
 
 }
