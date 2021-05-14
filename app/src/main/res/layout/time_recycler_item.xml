@@ -1,28 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="6dp"
     android:gravity="center_vertical"
-    android:layout_marginTop="4dp"
-    android:layout_marginBottom="5dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
     android:background="@android:color/white">
 
-    <Spinner
-        android:id="@+id/daySpinner"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/dayArray"/>
+        android:orientation="horizontal"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp">
 
-    <Spinner
-        android:id="@+id/startTimeSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:entries="@array/startTimeArray"/>
+        <Spinner
+            android:id="@+id/daySpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/dayArray"/>
 
-    <Spinner
-        android:id="@+id/finishTimeSpinner"
-        android:layout_width="wrap_content"
+        <Spinner
+            android:id="@+id/startTimeSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/startTimeArray"/>
+
+        <Spinner
+            android:id="@+id/finishTimeSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/finishTimeArray"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/finishTimeArray"/>
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/addPlace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:hint="장소명"
+            android:layout_marginLeft="7dp"
+            android:backgroundTint="@android:color/transparent"
+            android:textSize="15dp"
+            android:textColor="@android:color/darker_gray"/>
+
+        <ImageButton
+            android:id="@+id/deleteTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="100"
+            android:background="@drawable/ic_outline_delete_24"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="center_vertical"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="6px"
+        android:background="#d3d3d3"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="2dp" />
+
 </LinearLayout>
