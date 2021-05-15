@@ -47,9 +47,10 @@
             android:id="@+id/addPlace"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="10"
+            android:layout_weight="1"
             android:hint="장소명"
             android:layout_marginLeft="7dp"
+            android:layout_marginRight="10dp"
             android:backgroundTint="@android:color/transparent"
             android:textSize="15dp"
             android:textColor="@android:color/darker_gray"/>
@@ -58,7 +59,7 @@
             android:id="@+id/deleteTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="100"
+            android:layout_weight="10"
             android:background="@drawable/ic_outline_delete_24"
             android:layout_marginRight="10dp"
             android:layout_gravity="center_vertical"/>

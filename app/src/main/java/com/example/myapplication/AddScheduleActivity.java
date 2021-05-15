@@ -22,17 +22,14 @@ public class AddScheduleActivity extends AppCompatActivity {
     private RecyclerViewAdapter adapter = null;
     private ArrayList<TimeAddRecyclerViewItem> list;
 
-    private boolean isAdd = true;
-    private int idx = 0;
-
-    private Button addTime;
     private TextView complete;
+    private Button addTime;
+    private ImageButton deleteTime;
 
     private Spinner daySpinner;
     private Spinner startTimeSpinner;
     private Spinner finishTimeSpinner;
     private EditText addPlace;
-    private ImageButton deleteTime;
 
 
     @Override
@@ -49,17 +46,12 @@ public class AddScheduleActivity extends AppCompatActivity {
             }
         });
 
-        complete = (TextView) findViewById(R.id.completeButton);
-        complete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
         list = new ArrayList<>();
         recyclerView = findViewById(R.id.timeRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new RecyclerViewAdapter(list);
+        recyclerView.setAdapter(adapter);
+
         daySpinner = recyclerView.findViewById(R.id.daySpinner);
         startTimeSpinner = recyclerView.findViewById(R.id.startTimeSpinner);
         finishTimeSpinner = recyclerView.findViewById(R.id.finishTimeSpinner);
@@ -70,26 +62,27 @@ public class AddScheduleActivity extends AppCompatActivity {
         addTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isAdd) {
-                    addItem(daySpinner, startTimeSpinner, finishTimeSpinner);
+                if(adapter.getItemCount() < 3) {
+                    addItem(daySpinner, startTimeSpinner, finishTimeSpinner, addPlace, deleteTime);
                     adapter.notifyDataSetChanged();
-                    idx++;
-                    if(idx == 1) {
+                    if(adapter.getItemCount() == 1) {
                         complete.setBackgroundColor(Color.RED);
                         complete.setTextColor(Color.WHITE);
-                    }
-                    if(idx == 3) {
-                        isAdd = false;
                     }
                 }
             }
         });
 
-        adapter = new RecyclerViewAdapter(list);
-        recyclerView.setAdapter(adapter);
+        complete = (TextView) findViewById(R.id.completeButton);
+        complete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
-    private void addItem(Spinner daySpinner, Spinner startTimeSpinner, Spinner finishTimeSpinner) {
+    private void addItem(Spinner daySpinner, Spinner startTimeSpinner, Spinner finishTimeSpinner, EditText addPlace, ImageButton deleteTime) {
         TimeAddRecyclerViewItem item = new TimeAddRecyclerViewItem();
         item.setDaySpinner(daySpinner);
         item.setStartTimeSpinner(startTimeSpinner);
@@ -98,6 +91,7 @@ public class AddScheduleActivity extends AppCompatActivity {
         item.setDeleteTime(deleteTime);
         list.add(item);
     }
+
 
 }
 

@@ -3,7 +3,6 @@ package com.example.myapplication;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -28,31 +27,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     // onBindViewHolder : position에 해당하는 데이터를 뷰홀더의 아이템뷰에 표시
     @Override public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.daySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        holder.deleteTime.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+            public void onClick(View v) {
+                mData.remove(position);
+                notifyDataSetChanged();
             }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
-        });
-
-        holder.startTimeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
-        });
-
-        holder.finishTimeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
         });
     }
 
