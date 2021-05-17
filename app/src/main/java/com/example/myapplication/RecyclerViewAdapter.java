@@ -12,9 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+
+
     private ArrayList<TimeAddRecyclerViewItem> mData = null;
 
     public RecyclerViewAdapter(ArrayList<TimeAddRecyclerViewItem> data) { mData = data; }
+
+    public ArrayList<TimeAddRecyclerViewItem> getmData() { return mData; }
 
     // onCreateViewHolder : 아이템 뷰를 위한 뷰홀더 객체를 생성하여 리턴
     @Override
@@ -42,6 +46,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     // 아이템 뷰를 저장하는 뷰홀더 클래스
     public class ViewHolder extends RecyclerView.ViewHolder {
+        protected EditText addClass;
         protected Spinner daySpinner;
         protected Spinner startTimeSpinner;
         protected Spinner finishTimeSpinner;
@@ -52,6 +57,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             super(itemView);
 
             // 뷰 객체에 대한 참조
+            addClass = itemView.findViewById(R.id.addClass);
             daySpinner = itemView.findViewById(R.id.daySpinner);
             startTimeSpinner = itemView.findViewById(R.id.startTimeSpinner);
             finishTimeSpinner = itemView.findViewById(R.id.finishTimeSpinner);

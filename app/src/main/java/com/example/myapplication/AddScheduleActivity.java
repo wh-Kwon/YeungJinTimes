@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -15,6 +16,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class AddScheduleActivity extends AppCompatActivity {
@@ -26,11 +30,13 @@ public class AddScheduleActivity extends AppCompatActivity {
     private Button addTime;
     private ImageButton deleteTime;
 
+    private EditText addClass;
     private Spinner daySpinner;
     private Spinner startTimeSpinner;
     private Spinner finishTimeSpinner;
     private EditText addPlace;
 
+    private String fname = "Schedule.txt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +58,7 @@ public class AddScheduleActivity extends AppCompatActivity {
         adapter = new RecyclerViewAdapter(list);
         recyclerView.setAdapter(adapter);
 
+        addClass = recyclerView.findViewById(R.id.addClass);
         daySpinner = recyclerView.findViewById(R.id.daySpinner);
         startTimeSpinner = recyclerView.findViewById(R.id.startTimeSpinner);
         finishTimeSpinner = recyclerView.findViewById(R.id.finishTimeSpinner);
@@ -63,7 +70,7 @@ public class AddScheduleActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(adapter.getItemCount() < 3) {
-                    addItem(daySpinner, startTimeSpinner, finishTimeSpinner, addPlace, deleteTime);
+                    addItem(addClass, daySpinner, startTimeSpinner, finishTimeSpinner, addPlace, deleteTime);
                     adapter.notifyDataSetChanged();
                     if(adapter.getItemCount() == 1) {
                         complete.setBackgroundColor(Color.RED);
@@ -77,13 +84,29 @@ public class AddScheduleActivity extends AppCompatActivity {
         complete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try {
+                    FileOutputStream fs_out = openFileOutput(fname, Context.MODE_APPEND);
+                    PrintWriter pw = new PrintWriter(fs_out);
+                    for(int i =0; i < adapter.getItemCount(); i++) {
+                        String className = adapter.getmData().get(i).getAddClass().getText().toString();
+                        String day = adapter.getmData().get(i).getDaySpinner().getSelectedItem().toString();
+                        String startTime = adapter.getmData().get(i).getStartTimeSpinner().getSelectedItem().toString();
+                        String finishTime = adapter.getmData().get(i).getFinishTimeSpinner().getSelectedItem().toString();
+                        String placeName = adapter.getmData().get(i).getAddPlace().getText().toString();
+                        pw.println("c:" + className + ", d:" + day + ", s:" + startTime + ", f:" + finishTime + ", p:" + placeName);
+                    }
+                    pw.flush();
+                    pw.close();
+                } catch(IOException e) {
 
+                }
             }
         });
     }
 
-    private void addItem(Spinner daySpinner, Spinner startTimeSpinner, Spinner finishTimeSpinner, EditText addPlace, ImageButton deleteTime) {
+    private void addItem(EditText addClass, Spinner daySpinner, Spinner startTimeSpinner, Spinner finishTimeSpinner, EditText addPlace, ImageButton deleteTime) {
         TimeAddRecyclerViewItem item = new TimeAddRecyclerViewItem();
+        item.setAddClass(addClass);
         item.setDaySpinner(daySpinner);
         item.setStartTimeSpinner(startTimeSpinner);
         item.setFinishTimeSpinner(finishTimeSpinner);
@@ -91,7 +114,6 @@ public class AddScheduleActivity extends AppCompatActivity {
         item.setDeleteTime(deleteTime);
         list.add(item);
     }
-
 
 }
 
