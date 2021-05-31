@@ -61,6 +61,7 @@
         android:id="@+id/addClass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text=""
         android:hint="수업명"
         android:textSize="18dp"
         android:layout_marginTop="5dp"
@@ -69,7 +70,8 @@
         android:layout_marginBottom="5dp"
         android:textColor="@android:color/darker_gray"
         android:textStyle="bold"
-        android:background="@android:color/transparent"/>
+        android:background="@android:color/transparent"
+        android:singleLine="true"/>
 
     <View
         android:layout_width="match_parent"

@@ -37,8 +37,6 @@
             android:entries="@array/finishTimeArray"
             android:spinnerMode="dialog"/>
 
-
-
     </LinearLayout>
 
     <LinearLayout
@@ -51,12 +49,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:text=""
             android:hint="장소명"
             android:layout_marginLeft="7dp"
             android:layout_marginRight="10dp"
             android:backgroundTint="@android:color/transparent"
             android:textSize="15dp"
-            android:textColor="@android:color/darker_gray"/>
+            android:textColor="@android:color/darker_gray"
+            android:singleLine="true"/>
 
         <ImageButton
             android:id="@+id/deleteTime"

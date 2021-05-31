@@ -132,7 +132,7 @@
                 android:background="@drawable/border_square"
                 />
             <TextView
-                android:id="@+id/wednsday0"
+                android:id="@+id/wednesday0"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -209,7 +209,7 @@
                 android:background="@drawable/border_square"
                 />
             <TextView
-                android:id="@+id/wednsday1"
+                android:id="@+id/wednesday1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -286,7 +286,7 @@
                 android:background="@drawable/border_square"
                 />
             <TextView
-                android:id="@+id/wednsday2"
+                android:id="@+id/wednesday2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -364,7 +364,7 @@
                 android:background="@drawable/border_square"
                 />
             <TextView
-                android:id="@+id/wednsday3"
+                android:id="@+id/wednesday3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -441,7 +441,7 @@
                 android:background="@drawable/border_square"
                 />
             <TextView
-                android:id="@+id/wednsday4"
+                android:id="@+id/wednesday4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -518,7 +518,7 @@
                 android:background="@drawable/border_square"
                 />
             <TextView
-                android:id="@+id/wednsday5"
+                android:id="@+id/wednesday5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -595,7 +595,7 @@
                 android:background="@drawable/border_square"
                 />
             <TextView
-                android:id="@+id/wednsday6"
+                android:id="@+id/wednesday6"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -672,7 +672,7 @@
                 android:background="@drawable/border_square"
                 />
             <TextView
-                android:id="@+id/wednsday7"
+                android:id="@+id/wednesday7"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -749,7 +749,7 @@
                 android:background="@drawable/border_square"
                 />
             <TextView
-                android:id="@+id/wednsday8"
+                android:id="@+id/wednesday8"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -827,7 +827,7 @@
                 android:background="@drawable/border_square"
                 />
             <TextView
-                android:id="@+id/wednsday9"
+                android:id="@+id/wednesday9"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
