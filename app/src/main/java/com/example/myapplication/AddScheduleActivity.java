@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -27,12 +28,14 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
@@ -44,9 +47,8 @@ public class AddScheduleActivity extends AppCompatActivity {
     private Button addTime;
     private EditText addClass;
     String className = "";
-    Schedule schedule = new Schedule();
     ScheduleFragment scheduleFragment = new ScheduleFragment();
-    MainActivity main = new MainActivity();
+    String fileName = "Schedule.txt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +104,8 @@ public class AddScheduleActivity extends AppCompatActivity {
                     int finishTime = model.getFinishTime();
                     String placeName = model.getPlaceName();
 
-                    schedule.addSchedule(className, day, startTime, finishTime, placeName);
+//                    scheduleFragment.addSchedule(className, day, startTime, finishTime, placeName);
+                    dataInput(className+ "\t" + day + "\t" + startTime + "\t" + finishTime + "\t" + placeName);
                 }
 //                main.reload();
                 Intent MainActivityIntent = new Intent(AddScheduleActivity.this, MainActivity.class);
@@ -122,6 +125,42 @@ public class AddScheduleActivity extends AppCompatActivity {
         model.setPlaceName("");
         adapter.addItem(model);
     }
+
+    public void dataInput(String str) {
+        try {
+            Log.i("mylog", "cur dir: " + getFilesDir().toString());
+            FileOutputStream fos = openFileOutput(fileName, Context.MODE_PRIVATE);
+            fos.write(str.getBytes());
+            fos.close();
+
+//            FileInputStream fis = openFileInput(fileName);
+//            String line = new BufferedReader(new InputStreamReader(fis)).readLine();
+//            fis.close();
+//            Log.i("mylog", "file contents: " + line);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void dataRead(String str) {
+        try {
+            FileInputStream fis = openFileInput(fileName);
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fis));
+            String resultContents = "";
+            String temp = "";
+            while(bufferedReader.readLine() != null) {
+                temp = bufferedReader.readLine();
+                resultContents += temp;
+            }
+        } catch(FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 }

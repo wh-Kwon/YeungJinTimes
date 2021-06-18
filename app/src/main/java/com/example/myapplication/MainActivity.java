@@ -16,15 +16,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    private FragmentManager fragmentManager = getSupportFragmentManager();;;
-    private ScheduleFragment scheduleFragment = new ScheduleFragment();;
-    private FragmentTransaction transaction = fragmentManager.beginTransaction();
+    private FragmentManager fragmentManager = getSupportFragmentManager();
+    private ScheduleFragment scheduleFragment = new ScheduleFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_schedule);
 
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.frameLayout, scheduleFragment).commitAllowingStateLoss();
 
         ImageView addScheduleButton = (ImageView) findViewById(R.id.addScheduleButton);
@@ -36,9 +36,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        ImageView button = (ImageView) findViewById(R.id.scheduleListButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reload();
+            }
+        });
+
     }
 
     public void reload() {
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.detach(scheduleFragment).attach(scheduleFragment).commit();
     }
 
